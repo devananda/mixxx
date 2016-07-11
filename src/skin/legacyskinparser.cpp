@@ -1638,10 +1638,10 @@ void LegacySkinParser::setupSize(const QDomNode& node, QWidget* pWidget) {
         QString ys = size.mid(comma+1);
 
         bool widthOk = false;
-        int x = xs.toInt(&widthOk);
+        int x = xs.toInt(&widthOk) * 2;
 
         bool heightOk = false;
-        int y = ys.toInt(&heightOk);
+        int y = ys.toInt(&heightOk) * 2;
 
         // -1 means do not set.
         if (widthOk && heightOk && x >= 0 && y >= 0) {
@@ -1663,10 +1663,10 @@ void LegacySkinParser::setupSize(const QDomNode& node, QWidget* pWidget) {
         QString ys = size.mid(comma+1);
 
         bool widthOk = false;
-        int x = xs.toInt(&widthOk);
+        int x = xs.toInt(&widthOk) * 2;
 
         bool heightOk = false;
-        int y = ys.toInt(&heightOk);
+        int y = ys.toInt(&heightOk) * 2;
 
         // -1 means do not set.
         if (widthOk && heightOk && x >= 0 && y >= 0) {
@@ -1731,7 +1731,7 @@ void LegacySkinParser::setupSize(const QDomNode& node, QWidget* pWidget) {
         }
 
         bool widthOk = false;
-        int x = xs.toInt(&widthOk);
+        int x = xs.toInt(&widthOk) * 2;
         if (widthOk && x >= 0) {
             if (hasHorizontalPolicy &&
                     sizePolicy.horizontalPolicy() == QSizePolicy::Fixed) {
@@ -1744,7 +1744,7 @@ void LegacySkinParser::setupSize(const QDomNode& node, QWidget* pWidget) {
         }
 
         bool heightOk = false;
-        int y = ys.toInt(&heightOk);
+        int y = ys.toInt(&heightOk) * 2;
         if (heightOk && y >= 0) {
             if (hasVerticalPolicy &&
                     sizePolicy.verticalPolicy() == QSizePolicy::Fixed) {
