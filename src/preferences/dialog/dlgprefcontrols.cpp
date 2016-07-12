@@ -297,6 +297,11 @@ DlgPrefControls::DlgPrefControls(QWidget * parent, MixxxMainWindow * mixxx,
 
     slotUpdateSchemes();
 
+    checkBoxDoubleWidgetSize->setChecked(m_pConfig->getValueString(
+                       ConfigKey("[Config]", "DoubleWidgetSize")).toInt()==1);
+    connect(checkBoxDoubleWidgetSize, SIGNAL(toggled(bool)),
+            this, SLOT(slotSetDoubleWidgetSize(bool)));
+
     //
     // Start in fullscreen mode
     //
@@ -452,6 +457,9 @@ void DlgPrefControls::slotResetToDefaults() {
     // Cue recall on.
     checkBoxSeekToCue->setChecked(true);
 
+    // Default to normal size widgets
+    checkBoxDoubleWidgetSize->setChecked(false);
+
     // Don't start in full screen.
     checkBoxStartFullScreen->setChecked(false);
 
@@ -561,6 +569,10 @@ void DlgPrefControls::slotSetCueDefault(int index)
 void DlgPrefControls::slotSetCueRecall(bool b)
 {
     m_pConfig->set(ConfigKey("[Controls]", "CueRecall"), ConfigValue(b?0:1));
+}
+
+void DlgPrefControls::slotSetDoubleWidgetSize(bool b) {
+    m_pConfig->set(ConfigKey("[Config]", "DoubleWidgetSize"), ConfigValue(b?1:0));
 }
 
 void DlgPrefControls::slotSetStartInFullScreen(bool b) {
